@@ -1,0 +1,52 @@
+USE DB_T04301_VANESSA_CASTRO;
+
+CREATE TABLE TB_PRODUTOS_PAD
+(
+id_produto INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR (100),
+preco DECIMAL (8,2)
+);
+
+CREATE TABLE TB_ESTRUTURA_VENDAS_PAD
+(
+id_venda INT PRIMARY KEY AUTO_INCREMENT ,
+id_produto_vendas INT NOT NULL,
+FOREIGN KEY (id_produto_vendas)
+REFERENCES TB_PRODUTOS_PAD (id_produto),
+quantidade INT,
+data_venda DATE
+);
+
+CREATE TABLE TB_ESTRUTURA_FORNECEDOR_PAD
+(
+id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR (100),
+telefone VARCHAR (20)
+);
+INSERT INTO TB_PRODUTOS_PAD (nome,preco)
+VALUES 
+('pão', 1.00),
+('leite', 5.50),
+('café', 5.00),
+('bolo', 4.00);
+
+SELECT * FROM TB_PRODUTOS_PAD;
+INSERT INTO TB_ESTRUTURA_VENDAS_PAD (id_produto_vendas, quantidade, data_venda )
+VALUES 
+('1','5','2026-06-17'),
+('2','5','2026-06-17'),
+('1','3','2026-06-17'),
+('4','5','2026-06-17'),
+('3','6','2026-06-17');
+
+SELECT * FROM TB_ESTRUTURA_VENDAS_PAD;
+
+INSERT INTO TB_ESTRUTURA_FORNECEDOR_PAD (nome, telefone)
+VALUES 
+('Farinha company','(11) 3456-7821'),
+('Atacadão','(11) 2987-4503'),
+('Assai','(11) 3765-1298'),
+('Giga','(11) 2234-9876'),
+('Extra','(11) 4123-6509');
+
+SELECT * FROM TB_ESTRUTURA_FORNECEDOR_PAD;
